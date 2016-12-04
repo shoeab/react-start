@@ -35,6 +35,33 @@ class App extends React.Component{
 	handleSubmit(e) {
         e.preventDefault();
         var formData = this.state;
+        var url = "http://127.0.0.1:3000/api/question-add"
+        
+        /*var jqxhr = $.post( url, formData, function() {
+		  alert( "success" );
+		})
+		.done(function() {
+		alert( "second success" );
+		})
+		.fail(function() {
+		alert( "error" );
+		})
+		.always(function() {
+		alert( "finished" );
+		});*/
+		console.log(formData)
+
+		$.post( url, formData)
+		  .done(function( data ) {
+		    console.log( data );
+		  })
+		  .fail(function() {
+			alert( "error" );
+		  })
+		  .always(function() {
+			alert( "finished" );
+		  });
+
         console.log(formData);
     }
 
@@ -57,8 +84,8 @@ class App extends React.Component{
 						/>
 
 					<form onSubmit={ this.handleSubmit.bind(this)} encType='multipart/form-data'>
-						<input name="text" label="Email" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange.bind(this)} />
-	                    <input name="password" label="Password" type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange.bind(this)}/>
+						<input name="title" label="Email" type="text" placeholder="Title" value={this.state.title} onChange={this.handleChange.bind(this)} />
+	                    <input name="description" label="Password" type="text" placeholder="description" value={this.state.description} onChange={this.handleChange.bind(this)}/>
 	                    <button type="submit" value="Login" >Login </button>
 					</form>
 

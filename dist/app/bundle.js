@@ -113,6 +113,29 @@
 			value: function handleSubmit(e) {
 				e.preventDefault();
 				var formData = this.state;
+				var url = "http://127.0.0.1:3000/api/question-add";
+	
+				/*var jqxhr = $.post( url, function() {
+	   alert( "success" );
+	   })
+	   .done(function() {
+	   alert( "second success" );
+	   })
+	   .fail(function() {
+	   alert( "error" );
+	   })
+	   .always(function() {
+	   alert( "finished" );
+	   });*/
+	
+				$.ajax({
+					type: "POST",
+					url: url,
+					data: formData,
+					success: success,
+					dataType: json
+				});
+	
 				console.log(formData);
 			}
 		}, {
@@ -146,8 +169,8 @@
 							_react2.default.createElement(
 								"form",
 								{ onSubmit: this.handleSubmit.bind(this), encType: "multipart/form-data" },
-								_react2.default.createElement("input", { name: "text", label: "Email", type: "text", placeholder: "Email", value: this.state.email, onChange: this.handleChange.bind(this) }),
-								_react2.default.createElement("input", { name: "password", label: "Password", type: "password", placeholder: "Password", value: this.state.password, onChange: this.handleChange.bind(this) }),
+								_react2.default.createElement("input", { name: "text", label: "Email", type: "text", placeholder: "Email", value: this.state.title, onChange: this.handleChange.bind(this) }),
+								_react2.default.createElement("input", { name: "description", label: "Password", type: "text", placeholder: "description", value: this.state.description, onChange: this.handleChange.bind(this) }),
 								_react2.default.createElement(
 									"button",
 									{ type: "submit", value: "Login" },
